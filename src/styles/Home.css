@@ -1,240 +1,400 @@
-/* --- Variables Globales y Reset --- */
-:root {
-  --text-main: #0c111d;
-  --text-muted: #475467;
-  --purple-brand: #7f56d9;
-  --border-light: #f2f4f7;
-  --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-stack);
-  background-color: #ffffff;
-  color: var(--text-main);
-  -webkit-font-smoothing: antialiased;
-}
-
+/* ==========================================================================
+   1. ESTILOS BASE DEL LAYOUT Y CONTENEDORES
+   ========================================================================== */
 .home-container {
-  width: 100%;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: var(--color-neutral-dark);
+  background-color: var(--color-white);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* --- Header / Navbar --- */
-.home-header {
-  display: flex;
-  justify-content: space-between;
+.main-content {
+  flex-grow: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ==========================================================================
+   2. HERO SECTION - ADVANCED UI (MÓDULO DE ENCABEZADO)
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  background: radial-gradient(circle at 80% 20%, var(--color-primary-light) 0%, var(--color-primary-dark) 100%);
+  color: #FFFFFF; /* Contraste estricto sobre fondo guinda */
+  padding: 100px 0 120px 0;
+  overflow: hidden;
+}
+
+/* Patrón técnico lineal sutil de fondo */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: #ffffff;
-  box-sizing: border-box;
 }
 
-.header-left, .header-right {
-  display: flex;
+/* Cápsula de información / Badge Compuesto */
+.hero-badge-container {
+  display: inline-flex;
   align-items: center;
-  gap: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4px 6px;
+  border-radius: 30px;
+  margin-bottom: 24px;
 }
 
-.brand-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1.25rem;
-  color: var(--text-main);
-}
-
-.logo-emoji {
-  font-size: 1.4rem;
-}
-
-.header-nav {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-item, .nav-link-demo, .nav-link-login {
-  text-decoration: none;
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-.nav-item:hover, .nav-link-demo:hover {
-  color: var(--text-main);
-}
-
-.nav-link-login {
-  color: #2b6cb0; /* Color azul de 'Inicia sesión' */
-}
-
-.btn-register {
-  background-color: var(--purple-brand);
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
+.hero-badge-tag {
+  background-color: var(--color-secondary);
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 12px;
   border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+.hero-badge-text {
+  font-size: 0.8rem;
+  padding: 0 12px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+
+/* Tipografía del Hero */
+.main-title {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0 0 20px 0;
+  letter-spacing: -1.5px;
+}
+
+.text-3d {
+  color: var(--color-border); 
+  font-family: 'Arial Black', sans-serif;
+  font-size: 7rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.001em;
+  padding: 10px;
+  text-shadow:
+    /* Borde sutil alrededor de la letra */
+    -1px -1px 0 var(--color-letter),
+     1px -1px 0 var(--color-letter),
+    -1px  1px 0 var(--color-letter),
+     1px  1px 0 var(--color-border),
+    /* Bloque 3D extruido usando el tono de borde oscuro */
+     1px  1px 0px var(--color-border),
+     2px  2px 0px var(--color-border),
+     3px  3px 0px var(--color-border),
+     4px  4px 0px var(--color-border),
+     5px  5px 0px var(--color-letter),
+    /* Proyección de la sombra suave en el fondo */
+     6px  6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.main-subtitle {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 36px 0;
+  font-weight: 400;
+  max-width: 640px;
+}
+
+/* Botones de Acción Avanzados */
+.hero-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: #FFFFFF;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 6px;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-.btn-register:hover {
-  background-color: #6941c6;
+.btn-primary:hover {
+  background-color: var(--color-accent-light);
 }
 
-/* --- Main Layout --- */
-.home-main {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* --- Hero Section --- */
-.hero {
-  text-align: center;
-  max-width: 800px;
-  margin-bottom: 4rem;
-}
-
-.hero-title {
-  font-size: 3.2rem;
-  font-weight: 800;
-  color: var(--text-main);
-  margin: 0 0 1rem 0;
-  letter-spacing: -0.03em;
-}
-
-.hero-subtitle {
-  font-size: 1.3rem;
-  color: var(--text-muted);
-  line-height: 1.5;
-  margin: 0;
-}
-
-/* --- Grid de Tarjetas --- */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
-  width: 100%;
-}
-
-/* Estilo Base de las Tarjetas */
-.zen-card {
-  background: #ffffff;
-  border: 1px solid #e4e7ec;
-  border-radius: 24px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0px 1px 3px rgba(16, 24, 40, 0.05);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.zen-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.08);
-}
-
-/* Cabecera de la Tarjeta */
-.card-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  padding: 1.5rem;
-}
-
-.card-icon {
-  font-size: 1.25rem;
-  background-color: #f8f9fa;
-  padding: 0.4rem;
-  border-radius: 8px;
-  line-height: 1;
-}
-
-.card-header-text h3 {
-  margin: 0 0 0.25rem 0;
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--text-main);
-}
-
-.card-header-text p {
-  margin: 0;
+.btn-secondary {
+  background-color: transparent;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 14px 28px;
+  border-radius: 6px;
   font-size: 0.95rem;
-  color: var(--text-muted);
-  line-height: 1.4;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-/* Cuerpo de la Tarjeta (Área del Gráfico) */
-.card-body {
-  height: 220px;
-  position: relative;
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: #FFFFFF;
+}
+
+/* Panel Visual Abstracto (Efecto Glassmorphism) */
+.hero-visual-panel {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.visual-card {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  max-width: 340px;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.visual-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 12px;
+}
+
+.status-indicator-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-success);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--color-success);
+}
+
+.visual-card-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+}
+
+.visual-data-mock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.data-line {
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+
+.data-line.long { width: 85%; }
+.data-line.short { width: 45%; }
+
+.data-bar-container {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.data-bar {
+  height: 32px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  flex-grow: 1;
+  position: relative;
   overflow: hidden;
 }
 
-/* Fondos Difuminados (Blobs) imitando la foto */
-.graphic-blob {
+.data-bar::after {
+  content: "";
   position: absolute;
-  width: 130%;
-  height: 130%;
-  bottom: -40%;
-  border-radius: 50%;
-  filter: blur(20px);
-  opacity: 0.6;
+  left: 0; top: 0; bottom: 0;
 }
 
-.blob-purple {
-  background: radial-gradient(circle, #d6bbfb 0%, #f4ebff 70%, #ffffff 100%);
+.data-bar.progress-1::after {
+  width: 70%;
+  background-color: var(--color-accent);
 }
 
-.blob-green {
-  background: radial-gradient(circle, #a7f3d0 0%, #ecfdf5 70%, #ffffff 100%);
+.data-bar.progress-2::after {
+  width: 40%;
+  background-color: var(--color-secondary);
 }
 
-.blob-blue {
-  background: radial-gradient(circle, #93c5fd 0%, #eff6ff 70%, #ffffff 100%);
+/* ==========================================================================
+   3. SECCIÓN DE DESCRIPCIÓN GENERAL (GRID DE TARJETAS)
+   ========================================================================== */
+.description-section {
+  padding: 80px 0;
 }
 
-/* Iconos Flotantes Centrales */
-.center-icon {
-  position: relative;
-  z-index: 2;
-  width: 80px;
-  height: 80px;
-  border-radius: 20px;
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.info-card {
+  background: var(--color-neutral-light);
+  padding: 40px 30px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2.5rem;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12);
+  flex-direction: column;
 }
 
-.icon-purple {
-  background: linear-gradient(135deg, #9b51e0, #7028b5);
-  color: white;
+.info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.05);
 }
 
-.icon-green {
-  background: linear-gradient(135deg, #27ae60, #1e8449);
-  color: white;
+/* Tarjeta destacada con el color temático ambiental */
+.info-card.highlight {
+  border-top: 4px solid var(--color-border);
 }
 
-.icon-blue {
-  background: linear-gradient(135deg, #2d9cdb, #1f70a8);
-  color: white;
+.card-category {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-primary-light);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.info-card h3 {
+  font-size: 1.5rem;
+  margin: 0 0 16px 0;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.info-card p {
+  line-height: 1.6;
+  color: var(--color-neutral-dark);
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* Badges de tecnología dentro del texto */
+.tech-tag {
+  background-color: var(--color-primary-alpha);
+  color: var(--color-primary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-family: monospace;
+  font-weight: 600;
+}
+
+.card-footer-text {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--color-neutral-dark);
+  opacity: 0.8;
+  border-top: 1px solid var(--color-border);
+  padding-top: 12px;
+}
+
+/* ==========================================================================
+   4. SECCIÓN DE REDES POLITÉCNICAS
+   ========================================================================== */
+.networks-section {
+  background-color: var(--color-neutral-light);
+  border-top: 1px solid var(--color-border);
+  padding: 80px 0;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.networks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.network-item {
+  background: var(--color-white);
+  padding: 24px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  border: 1px solid var(--color-border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.network-item:hover {
+  border-color: var(--color-accent);
+}
+
+.network-name {
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-neutral-dark);
+  font-size: 1rem;
+}
+
+/* ==========================================================================
+   5. RESPONSIVIDAD MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 968px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+  
+  .hero-visual-panel {
+    display: none; /* Esconde la simulación de interfaz en móviles */
+  }
+  
+  .main-title {
+    font-size: 2.8rem;
+  }
+  
+  .hero-actions {
+    justify-content: center;
+  }
+  
+  .main-subtitle {
+    margin: 0 auto 30px auto;
+  }
 }

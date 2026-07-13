@@ -1,5 +1,19 @@
+import "../styles/Dashboard.css";
+import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
+
 function Dashboard() {
-  return <h1>Dashboard</h1>;
+  return (
+    <>
+      <Navbar />
+
+      <main className="dashboard-container">
+        <h1>Dashboard</h1>
+      </main>
+
+      <Footer />
+    </>
+  );
 }
 
 export default Dashboard;

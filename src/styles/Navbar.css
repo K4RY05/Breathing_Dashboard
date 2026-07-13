@@ -1,0 +1,141 @@
+@import url("../App.css");
+
+.home-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header-left, .header-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.logo-emoji {
+  font-size: 1.5rem;
+}
+
+.brand-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  transition: color 0.3s ease;
+}
+
+.header-nav {
+  display: flex;
+  gap: 1.75rem;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: var(--color-neutral-dark);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+  color: var(--color-primary-light);
+}
+
+.nav-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary-light);
+  transition: width 0.3s ease;
+}
+
+.nav-item:hover::after {
+  width: 100%;
+}
+
+.btn-theme-toggle {
+  background: none;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  height: 40px;
+  padding: 0 1rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--color-neutral-light);
+  transition: background-color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+}
+
+.btn-theme-toggle:hover {
+  transform: scale(1.02);
+  border-color: var(--color-primary-light);
+}
+
+.btn-theme-toggle:active {
+  transform: scale(0.98);
+}
+
+.toggle-icon {
+  font-size: 1.1rem;
+}
+
+.toggle-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-neutral-dark);
+  white-space: nowrap;
+}
+
+.btn-register {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  padding: 0.6rem 1.3rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(122, 28, 60, 0.2);
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.btn-register:hover {
+  background-color: var(--color-primary-dark);
+  box-shadow: 0 4px 12px rgba(122, 28, 60, 0.3);
+}
+
+.btn-register:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .home-header {
+    padding: 0.75rem 1rem;
+  }
+  .header-nav {
+    display: none;
+  }
+}
