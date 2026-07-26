@@ -1,5 +1,21 @@
+import "../styles/Dashboard.css";
+import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
+
+
 function SensorReport() {
-  return <h1>Reporte de Sensores</h1>;
+   return (
+    <>
+      <Navbar />
+
+      <main className="Sensorreport-container">
+      
+      </main>
+
+      <Footer />
+    </>
+  );
 }
 
 export default SensorReport;
+

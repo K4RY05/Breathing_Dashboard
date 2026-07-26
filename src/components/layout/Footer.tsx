@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../../styles/Footer.css";
 
 function Footer(): React.JSX.Element {
@@ -7,12 +8,15 @@ function Footer(): React.JSX.Element {
       <div className="footer-content">
         <div className="footer-brand">
           <span className="logo-emoji">🫁</span>
-          <span>© {new Date().getFullYear()} Respira. Todos los derechos reservados.</span>
+          <span>
+            © {new Date().getFullYear()} Respira. Todos los derechos reservados.
+          </span>
         </div>
+
         <div className="footer-links">
-          <a href="#privacidad">Privacidad</a>
-          <a href="#terminos">Términos</a>
-          <a href="#contacto">Contacto</a>
+          <Link to="/privacy">Privacidad</Link>
+          <Link to="/terms">Términos</Link>
+          <Link to="/contact">Contacto</Link>
         </div>
       </div>
     </footer>

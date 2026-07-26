@@ -1,6 +1,7 @@
 import "../styles/Home.css";
 import Navbar from "../components/layout/Navbar.tsx";
 import Footer from "../components/layout/Footer.tsx";
+import images from "../assets";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
@@ -32,7 +33,7 @@ function Home() {
                 </button>
               </div>
             </div>
-            
+
             <div className="hero-visual-panel">
               <div className="visual-card">
                 <div className="visual-card-header">
@@ -92,23 +93,54 @@ function Home() {
         {/* Sección de las Redes Colaboradoras */}
         <section className="networks-section">
           <div className="container">
-            <h2 className="section-title">Redes Politécnicas Participantes</h2>
+            <h2 className="section-title">
+              Redes Politécnicas Participantes
+            </h2>
+
             <div className="networks-grid">
               <div className="network-item">
+                <img
+                  src={images.computacion}
+                  alt="Red de Computación"
+                  className="network-image"
+                />
                 <p className="network-name">Red de Computación</p>
               </div>
+
               <div className="network-item">
-                <p className="network-name">REMA (Red de Medio Ambiente)</p>
+                <img
+                  src={images.rema}
+                  alt="REMA"
+                  className="network-image"
+                />
+                <p className="network-name">
+                  REMA (Red de Medio Ambiente)
+                </p>
               </div>
+
               <div className="network-item">
-                <p className="network-name">Red de Desarrollo Económico</p>
+                <img
+                  src={images.desarrollo}
+                  alt="Red de Desarrollo Económico"
+                  className="network-image"
+                />
+                <p className="network-name">
+                  Red de Desarrollo Económico
+                </p>
               </div>
+
               <div className="network-item">
+                <img
+                  src={images.salud}
+                  alt="Red de Salud"
+                  className="network-image"
+                />
                 <p className="network-name">Red de Salud</p>
               </div>
             </div>
           </div>
         </section>
+
       </main>
 
       <Footer />
