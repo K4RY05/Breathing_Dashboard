@@ -1,24 +1,49 @@
+// src/types/sensorData.ts
+
 export interface RawSensorRecord {
   timestamp_iso?: string;
   box_temp?: number;
   manifold_temp?: number;
   manifold_rh?: number;
+  pressure?: number;
+  dew_point?: number;
+  noise?: number;
+  solar?: number;
+  wind_dir?: number;
+  wind_speed?: number;
+  co2?: number;
+  co_we?: number;
+  no_we?: number;
+  no2_we?: number;
+  ox_we?: number;
   pm1?: number;
   pm25?: number;
   pm10?: number;
-  co2?: number;
-  pressure?: number;
-  noise?: number;
   [key: string]: any;
 }
 
 export interface CleanSensorRecord {
   timestamp: string;
   dateObj: Date;
+  // 1. Condiciones Ambientales
+  manifoldTemp: number | null;
+  manifoldRh: number | null;
+  // 2. Calidad del Aire
+  co2: number | null;
+  co: number | null;
+  no: number | null;
+  no2: number | null;
+  o3: number | null;
+  // 3. Material Particulado
+  pm1: number | null;
   pm25: number | null;
   pm10: number | null;
-  temperature: number | null;
-  humidity: number | null;
+  // 4. Variables Meteorológicas
+  pressure: number | null;
+  dewPoint: number | null;
+  // 5. Viento
+  windSpeed: number | null;
+  windDir: number | null;
 }
 
 export interface FilterOptions {

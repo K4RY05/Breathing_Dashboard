@@ -7,32 +7,43 @@ export const getAvailableCsvFiles = (): string[] => {
   return Object.keys(csvModules);
 };
 
+const parseNum = (val: any): number | null => {
+  if (val === null || val === undefined || val === '') return null;
+  const num = typeof val === 'number' ? val : parseFloat(val);
+  return isNaN(num) ? null : num;
+};
+
 const cleanRecord = (row: RawSensorRecord): CleanSensorRecord | null => {
   const rawDate = row.timestamp_iso || '';
   const dateObj = new Date(rawDate);
 
-  // Si la fecha no se puede parsear correctamente, descarta el registro
   if (isNaN(dateObj.getTime())) return null;
-
-  const parseNum = (val: any): number | null => {
-    if (val === null || val === undefined || val === '') return null;
-    const num = typeof val === 'number' ? val : parseFloat(val);
-    return isNaN(num) ? null : num;
-  };
 
   return {
     timestamp: dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
     dateObj,
+    // 1. Condiciones Ambientales
+    manifoldTemp: parseNum(row.manifold_temp ?? row.box_temp),
+    manifoldRh: parseNum(row.manifold_rh),
+    // 2. Calidad del Aire
+    co2: parseNum(row.co2),
+    co: parseNum(row.co_we),
+    no: parseNum(row.no_we),
+    no2: parseNum(row.no2_we),
+    o3: parseNum(row.ox_we),
+    // 3. Material Particulado
+    pm1: parseNum(row.pm1),
     pm25: parseNum(row.pm25),
     pm10: parseNum(row.pm10),
-    temperature: parseNum(row.manifold_temp ?? row.box_temp),
-    humidity: parseNum(row.manifold_rh),
+    // 4. Variables Meteorológicas
+    pressure: parseNum(row.pressure),
+    dewPoint: parseNum(row.dew_point),
+    // 5. Viento
+    windSpeed: parseNum(row.wind_speed),
+    windDir: parseNum(row.wind_dir),
   };
 };
 
-/**
- * Carga, limpia y procesa los datos de los CSV seleccionados
- */
 export const loadAndProcessCsvData = async (
   filePaths: string[],
   options: FilterOptions = {}
@@ -44,6 +55,7 @@ export const loadAndProcessCsvData = async (
 
     const rawContent = (await csvModules[path]()) as string;
 
+    // Se salta la primera línea (deviceID,...) para usar la línea 2 como encabezados reales
     const firstNewlineIndex = rawContent.indexOf('\n');
     const csvDataClean = firstNewlineIndex !== -1 ? rawContent.substring(firstNewlineIndex + 1) : rawContent;
 
@@ -60,12 +72,10 @@ export const loadAndProcessCsvData = async (
     combinedRecords.push(...cleaned);
   }
 
-  // Ordenar cronológicamente
   combinedRecords.sort((a, b) => a.dateObj.getTime() - b.dateObj.getTime());
 
   return filterRecords(combinedRecords, options);
 };
-
 
 export const filterRecords = (
   records: CleanSensorRecord[],
