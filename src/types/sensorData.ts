@@ -53,3 +53,22 @@ export interface FilterOptions {
   maxPm25?: number;
   samplingInterval?: number;
 }
+
+// --- Diagnóstico de carga de archivos CSV ---
+
+export type FileLoadStatus = 'ok' | 'missing' | 'empty' | 'parse_error';
+
+export interface FileDiagnostic {
+  path: string;
+  status: FileLoadStatus;
+  rawRowCount: number;
+  cleanedRowCount: number;
+  droppedRowCount: number;
+  papaParseErrors: number;
+  errorMessage?: string;
+}
+
+export interface LoadResult {
+  records: CleanSensorRecord[];
+  diagnostics: FileDiagnostic[];
+}
