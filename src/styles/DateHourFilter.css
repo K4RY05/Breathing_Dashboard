@@ -1,0 +1,128 @@
+/* Sidebar de Filtros (Vertical a la izquierda) */
+.dashboard-filters-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 210px;
+  background-color: var(--color-neutral-light);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Encabezado del panel lateral */
+.filter-sidebar-header {
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.filter-sidebar-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Ítem de filtro */
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.filter-item label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-neutral-dark);
+}
+
+/* Entradas de texto y selects */
+.filter-input,
+.filter-select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  outline: none;
+  background-color: var(--color-white);
+  color: var(--color-neutral-dark);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+/* Personalización del icono de fecha en modo oscuro */
+.filter-input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: var(--calendar-icon-filter, none);
+}
+
+[data-theme="dark"] .filter-input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.filter-input:focus,
+.filter-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-alpha);
+}
+
+/* Acciones y Botones */
+.filter-actions {
+  margin-top: 0.5rem;
+}
+
+.btn-clear-filters {
+  width: 100%;
+  padding: 0.65rem 1rem;
+  background-color: var(--color-primary);
+  color: var(--color-letter);
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-clear-filters:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.btn-clear-filters:active {
+  transform: scale(0.98);
+}
+
+
+/* Footer discreto al final del filtro */
+.filter-sidebar-footer {
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.75rem; /* Tamaño de fuente discreto */
+  color: var(--color-neutral-medium);
+}
+
+.filter-info-text strong {
+  color: var(--color-neutral-dark);
+  font-weight: 600;
+}
+
+.filter-files-count {
+  font-size: 0.7rem;
+  opacity: 0.8;
+}

@@ -1,6 +1,6 @@
 // src/components/charts/DashboardMeasurements/AirQualityChart.tsx
 import React from 'react';
-import { useSensorData } from '../../../hooks/useSensorData';
+import type { CleanSensorRecord } from '../../../types/sensorData';
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -15,11 +15,18 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-export const AirQualityChart: React.FC = () => {
-  const { data, loading, error } = useSensorData();
+interface AirQualityChartProps {
+  data: CleanSensorRecord[];
+}
 
-  if (loading) return <div>Cargando calidad del aire...</div>;
-  if (error) return <div>Error: {error}</div>;
+export const AirQualityChart: React.FC<AirQualityChartProps> = ({ data }) => {
+  if (!data || data.length === 0) {
+    return (
+      <div style={{ height: '350px', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <p style={{ color: '#64748b' }}>No hay registros disponibles para el rango seleccionado.</p>
+      </div>
+    );
+  }
 
   const chartData = {
     labels: data.map((d) => d.timestamp),
@@ -31,18 +38,6 @@ export const AirQualityChart: React.FC = () => {
         backgroundColor: 'rgba(139, 92, 246, 0.5)',
         tension: 0.2,
       },
-      /* Descomentar cuando agregues los otros gases
-      {
-        label: 'CO (ppb)',
-        data: data.map((d) => d.co),
-        borderColor: '#eab308',
-      },
-      {
-        label: 'NO2 (ppb)',
-        data: data.map((d) => d.no2),
-        borderColor: '#ef4444',
-      },
-      */
     ],
   };
 

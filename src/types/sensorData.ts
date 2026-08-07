@@ -72,3 +72,8 @@ export interface LoadResult {
   records: CleanSensorRecord[];
   diagnostics: FileDiagnostic[];
 }
+export interface FilterOptions {
+  selectedDate?: string; // Formato 'YYYY-MM-DD'
+  startHour?: number;    // 0 a 23
+  endHour?: number;      
+}
