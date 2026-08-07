@@ -45,7 +45,6 @@ function Dashboard(): React.JSX.Element {
       <main className="dashboard-container">
         <header className="dashboard-header">
           <h1>Dashboard de Mediciones del Sensor</h1>
-          <p>Filtra la información por día y rango de horario.</p>
         </header>
 
     <div className="dashboard-layout">

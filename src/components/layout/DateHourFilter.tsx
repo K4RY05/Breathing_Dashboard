@@ -30,6 +30,7 @@ export const DateHourFilter: React.FC<DateHourFilterProps> = ({
     <aside className="dashboard-filters-sidebar">
       <div className="filter-sidebar-header">
         <h3 className="filter-sidebar-title">Filtros</h3>
+        <p className="filter-siderbar-subtitle">Filtra la información por día y rango de horario.</p>
       </div>
 
       {/* Filtro de Día */}
