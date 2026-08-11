@@ -77,3 +77,13 @@ export interface FilterOptions {
   startHour?: number;    // 0 a 23
   endHour?: number;      
 }
+
+export interface ChartSection {
+  id: string;
+  label: string;
+}
+
+export interface NavabarFilterProps {
+  activeSection: string;
+  onSelectSection: (id: string) => void;
+}

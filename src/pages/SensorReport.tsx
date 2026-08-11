@@ -3,8 +3,11 @@ import "../styles/SensorReport.css";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import { useSensorData } from "../hooks/useSensorData";
-import { AirQualityChart } from "../components/charts/DashboardMeasurements/AirQualityChart";
 import { DateHourFilter } from "../components/layout/DateHourFilter";
+
+
+
+
 
 const getCurrentDate = (): string => {
   const today = new Date();

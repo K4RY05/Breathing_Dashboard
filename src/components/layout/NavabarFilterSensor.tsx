@@ -3,19 +3,18 @@ import '../../styles/NavabarFilter.css';
 import type { ChartSection, NavabarFilterProps } from '../../types/sensorData';
 
 const SECTIONS: ChartSection[] = [
-  { id: 'chart-air-quality', label: 'Calidad de Aire' },
-  { id: 'chart-climate', label: 'Clima' },
-  { id: 'chart-particles', label: 'Partículas' },
-  { id: 'chart-wind', label: 'Viento' },
-  { id: 'chart-weather', label: 'Tiempo' },
+  { id: 'chart-box-temperature', label: 'Teperatura del Sensor' },
+  { id: 'chart-sampling', label: 'Clima' },
+  { id: 'chart-flag', label: 'Partículas' },
+  { id: 'chart-Operation', label: 'Viento' }
 ];
 
-export const NavabarFilter: React.FC<NavabarFilterProps> = ({
-  activeSection,
-  onSelectSection,
-}) => {
-  return (
-    <nav className="navbar-filter-pill">
+export const NavabarFilterSensor: React.FC<NavabarFilterProps> =({
+    activeSection,
+    onSelectSection,
+})=>{
+    return(
+        <nav className="navbar-filter-pill">
       {/* Navegación central por pestañas */}
       <ul className="pill-menu">
         {SECTIONS.map((section) => (
@@ -30,5 +29,5 @@ export const NavabarFilter: React.FC<NavabarFilterProps> = ({
         ))}
       </ul>
     </nav>
-  );
+    );
 };

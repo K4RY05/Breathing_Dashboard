@@ -72,6 +72,9 @@
   border: 1px solid var(--color-danger);
 }
 
+.chart-section {
+  scroll-margin-top: 6rem; /* Deja un espacio suficiente para que la cápsula flotante no cubra el título */
+}
 /* Adaptabilidad para Pantallas Pequeñas (Mobile / Tablets) */
 @media (max-width: 900px) {
   .dashboard-layout {
