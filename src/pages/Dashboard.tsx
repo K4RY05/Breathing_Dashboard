@@ -43,12 +43,8 @@ function Dashboard(): React.JSX.Element {
       <Navbar />
 
       <main className="dashboard-container">
-        <header className="dashboard-header">
-          <h1>Dashboard de Mediciones del Sensor</h1>
-        </header>
 
     <div className="dashboard-layout">
-  {/* Filtro Sidebar con la info discreta integrada abajo */}
   <DateHourFilter
     selectedDate={selectedDate}
     onDateChange={setSelectedDate}

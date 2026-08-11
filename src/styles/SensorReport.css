@@ -1,5 +1,5 @@
 /* Contenedor General */
-.dashboard-container {
+.sensor-report-container {
   padding: 2rem;
   max-width: 1400px;
   margin: 0 auto;
@@ -7,14 +7,14 @@
 }
 
 /* Contenedor Principal: Sidebar + Contenido */
-.dashboard-layout {
+.sensor-report-layout {
   display: flex;
   gap: 1.5rem;
   align-items: flex-start;
 }
 
 /* Área Derecha de Gráficas y Métricas */
-.dashboard-main-content {
+.sensor-report-main-content {
   flex: 1;
   min-width: 0; /* Previene desbordamientos en hijos flex/grid */
   display: flex;
@@ -23,7 +23,7 @@
 }
 
 /* Barra de Información de Lecturas */
-.dashboard-info-bar {
+.sensor-report-info-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,7 +35,7 @@
   border: 1px solid var(--color-border);
 }
 
-.dashboard-info-bar strong {
+.sensor-report-info-bar strong {
   color: var(--color-primary);
 }
 
@@ -52,7 +52,7 @@
 }
 
 /* Mensajes de Estado */
-.dashboard-status {
+.sensor-report-status {
   padding: 1rem 1.25rem;
   border-radius: 8px;
   text-align: center;
@@ -74,7 +74,7 @@
 
 /* Adaptabilidad para Pantallas Pequeñas (Mobile / Tablets) */
 @media (max-width: 900px) {
-  .dashboard-layout {
+  .sensor-report-layout {
     flex-direction: column;
   }
 

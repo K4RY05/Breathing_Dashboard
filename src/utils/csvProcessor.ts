@@ -181,7 +181,6 @@ const parseOneFile = async (
 
 /**
  * Carga todos los archivos en paralelo (rápido, pero sin orden de aparición).
- * Úsalo cuando no te importa qué llega primero, solo el resultado final.
  */
 export const loadAndProcessCsvData = async (
   filePaths: string[],

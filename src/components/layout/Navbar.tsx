@@ -33,7 +33,7 @@ function Navbar(): React.JSX.Element {
          </Link>
         <nav className="header-nav" aria-label="Navegación principal">
          <Link to="/" className="nav-item">Inicio</Link>
-         <Link to="/dashboard" className="nav-item">Dashboard</Link>
+         <Link to="/dashboard" className="nav-item">Mediciones del Sensor</Link>
          <Link to="/sensor-report" className="nav-item">Reporte de sensores</Link>
         </nav>
       </div>
