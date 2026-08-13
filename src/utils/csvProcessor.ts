@@ -30,6 +30,7 @@ const cleanRecord = (row: RawSensorRecord): CleanSensorRecord | null => {
   return {
     timestamp: dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
     dateObj,
+    boxTemp: parseNum(row.box_temp),
     manifoldTemp: parseNum(row.manifold_temp ?? row.box_temp),
     manifoldRh: parseNum(row.manifold_rh),
     co2: parseNum(row.co2),
@@ -44,6 +45,10 @@ const cleanRecord = (row: RawSensorRecord): CleanSensorRecord | null => {
     dewPoint: parseNum(row.dew_point),
     windSpeed: parseNum(row.wind_speed),
     windDir: parseNum(row.wind_dir),
+    flag: parseNum(row.flag),
+    flowrate: parseNum(row.flowrate),
+    samplePeriod: parseNum(row.sample_period),
+    laserStatus: parseNum(row.laser_status),
   };
 };
 

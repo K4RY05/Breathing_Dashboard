@@ -19,12 +19,15 @@ export interface RawSensorRecord {
   pm1?: number;
   pm25?: number;
   pm10?: number;
+  laser_status?: number;
+  flag?: number;
   [key: string]: any;
 }
 
 export interface CleanSensorRecord {
   timestamp: string;
   dateObj: Date;
+  boxTemp: number | null; 
   // 1. Condiciones Ambientales
   manifoldTemp: number | null;
   manifoldRh: number | null;
@@ -44,6 +47,11 @@ export interface CleanSensorRecord {
   // 5. Viento
   windSpeed: number | null;
   windDir: number | null;
+  //6. Sensor
+  flag: number | null; 
+  flowrate: number | null;       
+  samplePeriod: number | null;   
+  laserStatus: number | null;  
 }
 
 export interface FilterOptions {
